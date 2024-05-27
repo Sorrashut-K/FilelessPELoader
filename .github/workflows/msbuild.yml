@@ -42,4 +42,4 @@ jobs:
       uses: actions/upload-artifact@v2
       with:
         name: Application_Artifact
-        path: ./FilelessPELoader/FilelessPELoader/x64/Release/
+        path: D:\a\FilelessPELoader\FilelessPELoader\FilelessPELoader\x64\Release\

